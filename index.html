@@ -14,31 +14,26 @@
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    /* Navy */
     --navy:        #0a1628;
     --navy-mid:    #142445;
     --navy-light:  #1e3860;
     --navy-soft:   #0f1e38;
 
-    /* Gold — muted, editorial */
     --gold:        #c99e5a;
     --gold-light:  #e8c88a;
     --gold-soft:   #fdf6e6;
     --gold-tint:   #faf0d9;
     --gold-dark:   #a67c3a;
 
-    /* Cream backgrounds */
     --cream:       #faf8f3;
     --cream-soft:  #f5f1e8;
     --cream-deep:  #ebe5d8;
 
-    /* Ink */
     --ink:         #14202e;
     --ink-mid:     #2a3445;
     --ink-soft:    #5f6b7e;
     --ink-muted:   #8894a6;
 
-    /* Lines */
     --line:        #e5e0d3;
     --line-soft:   #efeade;
 
@@ -349,7 +344,6 @@
     align-items: center;
   }
 
-  /* Hero photo treatment */
   .hero-img-wrap {
     position: relative;
     display: flex;
@@ -668,7 +662,6 @@
   .featured-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
   .featured-actions .btn-outline { font-size: .86rem; padding: 12px 22px; }
 
-  /* Document preview mockup */
   .featured-preview {
     position: relative;
     z-index: 1;
@@ -779,72 +772,194 @@
     text-transform: uppercase;
   }
 
-  /* ============ ABOUT ============ */
+  /* ============ ABOUT — Premium Redesign (No Photo) ============ */
   .about { background: var(--white); }
-  .about-grid {
-    display: grid;
-    grid-template-columns: .85fr 1fr;
-    gap: 64px;
-    align-items: center;
-  }
-  .about-img {
+  .about-layout { display: grid; gap: 44px; }
+
+  /* Bio panel */
+  .about-bio {
     position: relative;
-  }
-  .about-img img {
-    width: 100%;
+    padding: 44px 46px 40px 52px;
+    background:
+      radial-gradient(ellipse at 0% 0%, rgba(201,158,90,.08), transparent 55%),
+      linear-gradient(135deg, #faf8f3 0%, #fdf6e6 100%);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    aspect-ratio: 4/5;
-    object-fit: cover;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
   }
-  .about-img::before {
+  .about-bio::before {
     content: '';
     position: absolute;
-    inset: 20px -20px -20px 20px;
-    border: 1px solid var(--gold);
-    border-radius: var(--radius-lg);
-    z-index: -1;
-    opacity: .5;
+    left: 0;
+    top: 26px;
+    bottom: 26px;
+    width: 4px;
+    background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+    border-radius: 0 4px 4px 0;
   }
-  .about-text h3 {
+  .about-bio::after {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 240px;
+    height: 240px;
+    border: 1px solid rgba(201,158,90,.12);
+    border-radius: 50%;
+    box-shadow: 0 0 0 30px rgba(201,158,90,.03), 0 0 0 60px rgba(201,158,90,.015);
+    pointer-events: none;
+  }
+  .about-bio h3 {
+    position: relative;
     font-family: var(--serif);
-    font-size: clamp(1.6rem, 2.4vw, 2rem);
+    font-size: clamp(1.7rem, 2.6vw, 2.15rem);
     font-weight: 400;
     color: var(--navy);
     margin-bottom: 22px;
-    line-height: 1.2;
+    line-height: 1.15;
     letter-spacing: -.01em;
   }
-  .about-text h3 em { font-style: italic; color: var(--gold-dark); }
-  .about-text > p {
-    margin-bottom: 18px;
+  .about-bio h3 em { font-style: italic; color: var(--gold-dark); }
+  .about-bio p {
+    position: relative;
+    font-size: .97rem;
+    line-height: 1.85;
     color: var(--ink-soft);
-    font-size: .96rem;
-    line-height: 1.75;
+    margin-bottom: 16px;
   }
-  .about-text > p strong { color: var(--navy); font-weight: 600; }
-  .experience-block {
-    padding: 16px 20px;
-    border-left: 2px solid var(--gold);
-    margin-bottom: 14px;
-    border-radius: 0 10px 10px 0;
-    background: var(--cream);
-    transition: all .25s ease;
+  .about-bio p:last-of-type { margin-bottom: 0; }
+  .about-bio strong { color: var(--navy); font-weight: 600; }
+
+  /* Credential chips */
+  .about-creds {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 26px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(201,158,90,.2);
   }
-  .experience-block:hover {
-    background: var(--gold-soft);
-    border-left-color: var(--gold-dark);
-    transform: translateX(4px);
-  }
-  .experience-block strong {
-    color: var(--navy);
+  .about-cred {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 13px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: .76rem;
     font-weight: 600;
-    font-size: .92rem;
-    display: block;
-    margin-bottom: 4px;
+    color: var(--ink-mid);
+    letter-spacing: .01em;
+    transition: all .2s ease;
   }
-  .experience-block strong i { color: var(--gold-dark); margin-right: 6px; }
-  .experience-block br + * { color: var(--ink-soft); font-size: .88rem; line-height: 1.65; }
+  .about-cred:hover {
+    border-color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-xs);
+  }
+  .about-cred i { color: var(--gold-dark); font-size: .82rem; }
+
+  /* Experience cards */
+  .about-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+  }
+  .about-card {
+    position: relative;
+    padding: 30px 28px 26px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: all .3s cubic-bezier(.4,0,.2,1);
+    overflow: hidden;
+  }
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+  .about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--gold-tint);
+  }
+  .about-card:hover::before { opacity: 1; }
+  .about-card-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .about-card-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    background: linear-gradient(145deg, var(--navy), var(--navy-light));
+    color: var(--gold-light);
+    display: grid;
+    place-items: center;
+    font-size: 1.15rem;
+    box-shadow: 0 8px 20px rgba(10,22,40,.22), inset 0 1px 0 rgba(255,255,255,.1);
+    transition: transform .3s ease;
+  }
+  .about-card:hover .about-card-icon { transform: rotate(-5deg) scale(1.06); }
+  .about-card-meta { flex: 1; min-width: 0; }
+  .about-card-period {
+    display: inline-block;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 5px;
+  }
+  .about-card h4 {
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.35;
+    letter-spacing: -.01em;
+  }
+  .about-card p {
+    font-size: .9rem;
+    line-height: 1.72;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .about-tag {
+    font-size: .68rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--cream);
+    color: var(--ink-mid);
+    border: 1px solid var(--line);
+    letter-spacing: .01em;
+    transition: all .2s ease;
+  }
+  .about-card:hover .about-tag {
+    background: var(--gold-soft);
+    border-color: var(--gold-tint);
+    color: var(--gold-dark);
+  }
 
   /* ============ WHY ============ */
   .why { background: var(--cream); }
@@ -1190,7 +1305,6 @@
   }
   .flex-note i { color: var(--gold-light); margin-right: 6px; }
 
-  /* Proposal link below pricing */
   .proposal-link-row {
     display: flex;
     justify-content: center;
@@ -1719,7 +1833,6 @@
     .hero-cta { justify-content: center; }
     .hero-img { width: 280px; height: 280px; }
 
-    .about-grid { grid-template-columns: 1fr; gap: 40px; }
     .contact-flex { grid-template-columns: 1fr; gap: 40px; }
   }
 
@@ -1771,12 +1884,16 @@
     .flex-box h2 { font-size: 1.6rem; }
     .cta-banner h2 { font-size: 1.6rem; }
     .cta-banner { padding: 64px 0; }
-    .about-img::before { display: none; }
 
     .floating-widget { bottom: 84px; right: 16px; }
     #backToTop { bottom: 16px; right: 16px; }
 
     .footer-bottom { justify-content: center; text-align: center; }
+
+    /* New About responsive */
+    .about-bio { padding: 30px 26px 28px 32px; }
+    .about-cards { grid-template-columns: 1fr; }
+    .about-card { padding: 26px 22px 22px; }
   }
 
   @media (max-width: 560px) {
@@ -1806,7 +1923,11 @@
     .step-num { width: 46px; height: 46px; font-size: 1.3rem; }
     .stat-number { font-size: 2.4rem; }
     .contact-info h3 { font-size: 1.5rem; }
-    .about-text h3 { font-size: 1.4rem; }
+
+    /* New About responsive */
+    .about-bio { padding: 26px 22px 24px 28px; }
+    .about-bio h3 { font-size: 1.5rem; }
+    .about-bio p { font-size: .93rem; }
   }
 </style>
 </head>
@@ -1979,29 +2100,95 @@
   <div class="container">
     <div class="section-title reveal">
       <span class="eyebrow">About the Founder</span>
-      <h2>Bridging education <em>and</em> employability.</h2>
-      <p>A journey across corporate leadership, academic administration, and entrepreneurship — now dedicated to making students industry-ready.</p>
+      <h2>Two decades at the intersection of <em>industry, academia &amp; IT</em>.</h2>
+      <p>A career built across corporate HR leadership, premium technical campuses, and placement-focused entrepreneurship — now dedicated to making every student industry-ready.</p>
       <div class="divider"><span></span></div>
     </div>
-    <div class="about-grid">
-      <div class="about-img reveal">
-        <img src="https://sachinambekar.netlify.app/assets/images/untitled-design-18-940x788.webp" alt="Sachin Ambekar">
+
+    <div class="about-layout">
+
+      <!-- Bio panel -->
+      <div class="about-bio reveal">
+        <h3>Industry-Integrated <em>Career Strategist</em></h3>
+        <p>
+          I am <strong>Dr. Sachin Ambekar</strong> — a career strategist with over two decades at the intersection of corporate HR, premium technical campuses, and IT industry talent development. With dual MBAs in Marketing and HRM and a PhD in Management, my work today is dedicated to one mission: bridging the gap between what students learn and what recruiters actually hire for.
+        </p>
+        <p>
+          My corporate journey spans senior HR and operations leadership across <strong>IT services, product engineering, manufacturing, and service organizations</strong>. I have designed hiring pipelines for high-growth tech teams, run large-scale campus recruitment drives, and built talent development systems for both <strong>Tier-1 MNCs and mid-sized employers</strong> — from grooming freshers into polished, work-ready professionals to advising executive leadership on strategic HR and organizational transformation.
+        </p>
+        <p>
+          At <strong>premium technical campuses</strong>, I have led placement cells, corporate relations desks, and student development initiatives that consistently delivered measurable outcomes — higher placement percentages, deeper recruiter relationships, and stronger student confidence. My network spans IT services companies, product startups, and hiring managers across India who actively seek trained, work-ready graduates.
+        </p>
+        <p>
+          Since 2017, I have founded and advised ventures across digital marketing, IT services, and educational consulting. <strong>IICP — Industry Integrated Career Platform</strong> — is the culmination of everything I have learned: a fully managed, white-labelled partnership that gives every computer institute the training, placement support, internships, and tools that top-tier campuses have long enjoyed.
+        </p>
+
+        <div class="about-creds">
+          <span class="about-cred"><i class="fas fa-award"></i> PhD in Management</span>
+          <span class="about-cred"><i class="fas fa-graduation-cap"></i> Dual MBA (Marketing &amp; HRM)</span>
+          <span class="about-cred"><i class="fas fa-briefcase"></i> 20+ Years Corporate HR</span>
+          <span class="about-cred"><i class="fas fa-building-columns"></i> Premium Technical Campuses</span>
+          <span class="about-cred"><i class="fas fa-handshake"></i> Corporate Relations Leader</span>
+          <span class="about-cred"><i class="fas fa-bullseye"></i> Placement Cell Expert</span>
+          <span class="about-cred"><i class="fas fa-laptop-code"></i> IT Industry Network</span>
+          <span class="about-cred"><i class="fas fa-rocket"></i> Founder &amp; Entrepreneur</span>
+        </div>
       </div>
-      <div class="about-text reveal">
-        <h3>Industry-Integrated <em>Career Expert</em></h3>
-        <p>I hold an MBA in Marketing, an MBA in HRM, and a PhD in Management. My journey spans senior corporate roles, academic leadership, and successful entrepreneurship. Today I dedicate myself to bridging the gap between education and employability through <strong>IICP – Industry Integrated Career Platform</strong>.</p>
-        <div class="experience-block">
-          <strong><i class="fas fa-building"></i> Corporate HR &amp; Operations (2003–2011)</strong>
-          Senior management roles in Manufacturing, Service &amp; IT. Expertise in strategic HR, process optimization, and talent development.
+
+      <!-- Experience cards -->
+      <div class="about-cards">
+
+        <div class="about-card reveal">
+          <div class="about-card-head">
+            <div class="about-card-icon"><i class="fas fa-briefcase"></i></div>
+            <div class="about-card-meta">
+              <span class="about-card-period">2003 – 2011</span>
+              <h4>Corporate HR &amp; Operations Leadership</h4>
+            </div>
+          </div>
+          <p>Senior management roles across IT services, manufacturing, and service organizations. Led talent acquisition, strategic HR, process optimization, and organizational development for large and mid-sized employers.</p>
+          <div class="about-tags">
+            <span class="about-tag">Strategic HR</span>
+            <span class="about-tag">Talent Acquisition</span>
+            <span class="about-tag">IT Services</span>
+            <span class="about-tag">Process Design</span>
+          </div>
         </div>
-        <div class="experience-block">
-          <strong><i class="fas fa-graduation-cap"></i> Professor &amp; Head Corporate Relations (2011–2017)</strong>
-          Led industry-academia partnerships, placement cells, and student employability programs at a premier business school.
+
+        <div class="about-card reveal">
+          <div class="about-card-head">
+            <div class="about-card-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="about-card-meta">
+              <span class="about-card-period">2011 – 2017</span>
+              <h4>Professor &amp; Head — Corporate Relations</h4>
+            </div>
+          </div>
+          <p>Led industry-academia partnerships, placement cells, corporate relations, and student employability programs at a premier business school. Built corporate pipelines across IT services and product engineering companies.</p>
+          <div class="about-tags">
+            <span class="about-tag">Placement Cell</span>
+            <span class="about-tag">Corporate Relations</span>
+            <span class="about-tag">Campus Hiring</span>
+            <span class="about-tag">Student Development</span>
+          </div>
         </div>
-        <div class="experience-block">
-          <strong><i class="fas fa-chart-line"></i> Entrepreneur &amp; Business Consultant (2017–Present)</strong>
-          Founded digital marketing and consulting ventures, serving IT, Food &amp; Service industries. Creator of the IICP placement ecosystem.
+
+        <div class="about-card reveal">
+          <div class="about-card-head">
+            <div class="about-card-icon"><i class="fas fa-rocket"></i></div>
+            <div class="about-card-meta">
+              <span class="about-card-period">2017 – Present</span>
+              <h4>Founder &amp; Business Consultant</h4>
+            </div>
+          </div>
+          <p>Founded and advised ventures across digital marketing, IT services, and educational consulting. Creator of IICP — an integrated placement enablement ecosystem now serving institutes across India.</p>
+          <div class="about-tags">
+            <span class="about-tag">Entrepreneurship</span>
+            <span class="about-tag">IICP</span>
+            <span class="about-tag">EdTech</span>
+            <span class="about-tag">Career Strategy</span>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -2303,7 +2490,6 @@
       </div>
     </div>
 
-    <!-- Proposal link below pricing -->
     <div class="proposal-link-row reveal">
       <a href="https://iicpindia.github.io/proposal/" target="_blank" rel="noopener" class="proposal-link">
         <i class="fas fa-file-lines"></i>
@@ -2613,7 +2799,6 @@
 (function () {
   "use strict";
 
-  /* ============ MOBILE MENU ============ */
   const menuToggle = document.getElementById('mobile-menu');
   const navLinks = document.getElementById('nav-links');
 
@@ -2621,7 +2806,6 @@
     navLinks.classList.toggle('active');
   });
 
-  /* ============ SMOOTH SCROLL ============ */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
@@ -2635,7 +2819,6 @@
     });
   });
 
-  /* ============ BACK TO TOP ============ */
   const backToTop = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 500) backToTop.classList.add('show');
@@ -2645,7 +2828,6 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  /* ============ CONTACT FORM → WHATSAPP ============ */
   document.getElementById('contactForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -2668,7 +2850,6 @@
     setTimeout(() => form.reset(), 1000);
   });
 
-  /* ============ FAQ ACCORDION ============ */
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.parentElement;
@@ -2678,7 +2859,6 @@
     });
   });
 
-  /* ============ SCROLL REVEAL ============ */
   const revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
@@ -2694,7 +2874,6 @@
     revealEls.forEach(el => el.classList.add('in'));
   }
 
-  /* ============ ANIMATED COUNTERS ============ */
   const counters = document.querySelectorAll('.stat-number');
   let countersDone = false;
 
